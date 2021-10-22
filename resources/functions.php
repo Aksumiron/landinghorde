@@ -6,6 +6,7 @@
 
 use Roots\Sage\Config;
 use Roots\Sage\Container;
+use Brain\Hierarchy\Finder\FoldersTemplateFinder;
 
 /**
  * Helper function for prettying up errors
@@ -90,3 +91,105 @@ Container::getInstance()
             'view' => require dirname(__DIR__).'/config/view.php',
         ]);
     }, true);
+
+// Custom Fields Gutenberg
+
+/* WP GUTENGBERG CATEGORY */
+function new_block_category( $categories, $post ) {
+    return array_merge(
+        $categories,
+        array(
+            array(
+                'slug'  => 'content',
+                'title' => __( 'Contenu', 'Admin' ),
+            ),
+            array(
+                'slug'  => 'section',
+                'title' => __( 'Section', 'Admin' ),
+            ),
+        )
+    );
+}
+
+add_filter( 'block_categories', 'new_block_category', 10, 2 );
+
+/* REGISTER ACF BLOCKS */
+// add_action( 'acf/init', 'acf_blocks' );
+// function acf_blocks() {
+//     if ( function_exists( 'acf_register_block' ) ) {
+//
+//         /* DEFAULT BLOCK - EXCERPT */
+//         acf_register_block( array(
+//             'name'            => 'banner-section',
+//             'title'           => __( 'Banner Section', 'Admin' ),
+//             'render_callback' => 'acf_block_render_callback',
+//             'category'        => 'content',
+//             'icon'            => 'editor-alignleft',
+//             'keywords'        => array( 'tag 1', 'tag 2' ),
+//             'mode'            => 'edit',
+//             'supports'        => array( 'mode' => false, ),
+//         ) );
+//
+//     }
+// }
+
+/* DISABLE DEFAULT GUTENBERG BLOCKS */
+add_filter( 'allowed_block_types', 'allow_acf_blocks' );
+function allow_acf_blocks( $allowed_blocks ) {
+    return array(
+        'acf/banner-section',
+    );
+}
+
+/* ACF RENDER BLOCK */
+// function acf_block_render_callback( $block ) {
+//     $slug = str_replace( 'acf/', '', $block['name'] );
+//     if ( file_exists( get_theme_file_path( "resources/views/partials/gutenberg/{$slug}.blade.php" ) ) ) {
+//         include( get_theme_file_path( "resources/views/partials/gutenberg/{$slug}.blade.php" ) );
+//     }
+// }
+
+function my_acf_block_render_callback($block)
+{
+    $slug = str_replace('acf/', '', $block['name']);
+    $block['slug'] = $slug;
+    //$block['classes'] = implode(' ', [$block['slug'], $block['className'], $block['align']]);
+    echo \App\template("partials/gutenberg/${slug}", ['block' => $block]);
+}
+
+add_action('acf/init', function () {
+    if (function_exists('acf_register_block')) {
+        $dir = new DirectoryIterator(locate_template("/views/partials/gutenberg/"));
+        foreach ($dir as $fileinfo) {
+            if (!$fileinfo->isDot()) {
+                $slug = str_replace('.blade.php', '', $fileinfo->getFilename());
+                $file_path = locate_template("/views/partials/gutenberg/${slug}.blade.php");
+                $file_headers = get_file_data($file_path, [
+                    'title' => 'Title',
+                    'description' => 'Description',
+                    'category' => 'Category',
+                    'icon' => 'Icon',
+                    'keywords' => 'Keywords',
+                ]);
+                if (empty($file_headers['title'])) {
+                    die(_e('This block needs a title: ' . $file_path));
+                }
+                if (empty($file_headers['category'])) {
+                    die(_e('This block needs a category: ' . $file_path));
+                }
+                $datas = [
+                    'name' => $slug,
+                    'title' => $file_headers['title'],
+                    'description' => $file_headers['description'],
+                    'category' => $file_headers['category'],
+                    'icon' => $file_headers['icon'],
+                    'keywords' => explode(' ', $file_headers['keywords']),
+                    'render_callback' => 'my_acf_block_render_callback',
+                    'mode' => 'edit',
+                    'supports' => array('mode' => false)
+                ];
+                acf_register_block($datas);
+            }
+        }
+    }
+});

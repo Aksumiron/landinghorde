@@ -8,9 +8,9 @@
       "./scripts/customizer.js"
     ]
   },
-  "publicPath": "/app/themes/horde-landing-theme",
-  "devUrl": "http://landinghorde.local/",
-  "proxyUrl": "http://localhost:3000",
+  "publicPath": "/app/public/wp-content/themes/horde-landing-theme",
+  "devUrl": "http://localhost/landing_horde/",
+  "proxyUrl": "http://localhost",
   "cacheBusting": "[name]_[hash:8]",
   "watch": [
     "app/**/*.php",

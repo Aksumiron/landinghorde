@@ -102,7 +102,7 @@ let webpackConfig = {
       {
         test: /\.(ttf|otf|eot|woff2?|png|jpe?g|gif|svg|ico)$/,
         include: config.paths.assets,
-        loader: 'url',
+        loader: 'file',
         options: {
           limit: 4096,
           name: `[path]${assetsFilenames}.[ext]`,

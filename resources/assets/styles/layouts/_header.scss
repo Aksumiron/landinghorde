@@ -5,3 +5,22 @@
 .banner .nav a {
   @extend .nav-link;
 }
+
+// Custom nav styles
+.logo-section {
+  height: 136px;
+  padding: 3em;
+
+  .logo {
+    height: 136px;
+    width: 280px;
+    font-weight: 600;
+    letter-spacing: 2.08px;
+    line-height: 146px;
+  }
+
+  ul.navigation-menu {
+    display: flex;
+    list-style-type: none;
+  }
+}
