@@ -12,6 +12,14 @@ h1 {
   line-height: 146px;
 }
 
+h2 {
+  font-family: $font-family-poppins;
+  font-size: 40px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  line-height: 52px;
+}
+
 h3 {
   font-family: $font-family-poppins;
   font-weight: normal;
@@ -28,4 +36,8 @@ h3 {
   position: relative;
   right: 50%;
   width: 100vw;
+}
+
+.dark-background {
+  background-color: $secondary;
 }

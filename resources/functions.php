@@ -120,6 +120,8 @@ function allow_acf_blocks( $allowed_blocks ) {
     return array(
         'acf/banner-section',
         'acf/presentation-section',
+        'acf/produits-section',
+
     );
 }
 

@@ -8,7 +8,7 @@
 
   @php
   $id = get_field('id');
-  $titre = get_field('titre');
+  $titre = get_field('presentation_titre');
   $txt = get_field('txt');
   $btn_txt = get_field('btn_action');
   $iframe = get_field('video');
