@@ -92,6 +92,7 @@ Container::getInstance()
         ]);
     }, true);
 
+
 // Custom Fields Gutenberg
 
 /* WP GUTENGBERG CATEGORY */
@@ -113,41 +114,16 @@ function new_block_category( $categories, $post ) {
 
 add_filter( 'block_categories', 'new_block_category', 10, 2 );
 
-/* REGISTER ACF BLOCKS */
-// add_action( 'acf/init', 'acf_blocks' );
-// function acf_blocks() {
-//     if ( function_exists( 'acf_register_block' ) ) {
-//
-//         /* DEFAULT BLOCK - EXCERPT */
-//         acf_register_block( array(
-//             'name'            => 'banner-section',
-//             'title'           => __( 'Banner Section', 'Admin' ),
-//             'render_callback' => 'acf_block_render_callback',
-//             'category'        => 'content',
-//             'icon'            => 'editor-alignleft',
-//             'keywords'        => array( 'tag 1', 'tag 2' ),
-//             'mode'            => 'edit',
-//             'supports'        => array( 'mode' => false, ),
-//         ) );
-//
-//     }
-// }
-
 /* DISABLE DEFAULT GUTENBERG BLOCKS */
 add_filter( 'allowed_block_types', 'allow_acf_blocks' );
 function allow_acf_blocks( $allowed_blocks ) {
     return array(
         'acf/banner-section',
+        'acf/presentation-section',
     );
 }
 
 /* ACF RENDER BLOCK */
-// function acf_block_render_callback( $block ) {
-//     $slug = str_replace( 'acf/', '', $block['name'] );
-//     if ( file_exists( get_theme_file_path( "resources/views/partials/gutenberg/{$slug}.blade.php" ) ) ) {
-//         include( get_theme_file_path( "resources/views/partials/gutenberg/{$slug}.blade.php" ) );
-//     }
-// }
 
 function my_acf_block_render_callback($block)
 {

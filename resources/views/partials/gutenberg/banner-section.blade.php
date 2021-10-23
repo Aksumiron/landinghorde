@@ -1,84 +1,49 @@
 {{--
   Title: Banner Section
-  Description: textarea
+  Description: Premiere seciton de la page qui contient des statistiques clés ansi que la partie call-to-action
   Category: _
   Icon: _
-  Keywords: _
+  Keywords: banner, statistiques, cta
   --}}
 
-<div class="row">
-  <div class="col-12">
-    <section class="banner">
-      <img src="{{ the_field('background_image')->src }}" class="img-fluid" alt="">
-    </section>
+
+
+@php
+$img = get_field('background_image');
+$txt = get_field('txt_test');
+$rows = get_field('stats_cta');
+@endphp
+
+<section class="banner">
+  <div class="img-banner">
+    <img src="{{ $img['url'] }}" class="full-width img-fluid" alt="">
   </div>
-</div>
 
-{{-- @php
-
-// Check rows exists.
-if( have_rows('stats') ):
-
-    // Loop through rows.
-    while( have_rows('stats') ) : the_row();
-
-        // Load sub field value.
-        $sub_value = get_sub_field('nb');
-        echo '<div> hello </div>'
-
-    // End loop.
-    endwhile;
-
-@endphp --}}
-
-{{-- {!! the_field('stats')->nb !!}
-
-@if (the_field('stats'))
-  {{ $rows = get_field('stats'); }}
-  <div class='stats'>
+  @if ($rows)
+  <div class="row stats-ctas">
     @foreach ($rows as $row)
-      {{ $number = $row['nb'] }}
-      <div class="number">
-        {{ $number }}
+    <div class="col-md-4 col-sm-1">
+
+      <div class="stats">
+        <div class="stat-number">
+          <h1>{{ $row['stats_nb'] }}</h1>
+        </div>
+        <div class="stat-txt">
+          <h3>{{ $row['stats_txt'] }}</h3>
+        </div>
       </div>
+
+      <div class="ctas">
+        <div class="cta-titre">
+          <h4>{{ $row['cta_titre'] }}</h4>
+        </div>
+        <div class="cta-txt">
+          <h5>{{ $row['cta_txt'] }}</h5>
+        </div>
+        <button type="button" class="button-cta">{{ $row['cta_txt_btn'] }}</button>
+      </div>
+    </div>
     @endforeach
   </div>
-@endif --}}
-{{-- @php
-$rows = get_field('stats');
-
-if( $rows ) {
-    echo '<div>';
-    foreach( $rows as $row ) {
-      $nubmer = $row['nb']
-      $txt_paragraph = $row['txt_paragraph']
-
-      echo '<div>';
-        $nubmer
-      echo '</div>';
-    }
-    echo '</div>';
-}
-@endphp --}}
-
-
-@php
-  $txt = get_field('txt_test');
-  $rows = get_field('stats');
-@endphp
-
-
-@php
-  print_r($rows)
-@endphp
-
-@if ($rows)
-  @foreach ($rows as $row)
-    <div class="number">
-      {{ $row['nb'] }}
-    </div>
-    <div class="paragraph">
-      {{ $row['txt_paragraph'] }}
-    </div>
-  @endforeach
-@endif
+  @endif
+</section>
