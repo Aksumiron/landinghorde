@@ -23,5 +23,6 @@
 @import "layouts/pages";
 @import "layouts/posts";
 @import "layouts/tinymce";
-@import "components/banner-section";
-@import "components/products-section";
+@import "layouts/gutenberg/banner-section";
+@import "layouts/gutenberg/products-section";
+@import "layouts/gutenberg/equipe-section";

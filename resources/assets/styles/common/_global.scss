@@ -1,6 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
 
-body {
+body,
+html {
+  padding: 0;
+  margin: 0;
+  height: 100vh !important;
+  min-height: 100vh !important;
+  max-height: 100vh !important;
   font-family: $font-family-poppins;
 }
 
@@ -28,6 +34,14 @@ h3 {
   line-height: 35px;
 }
 
+h4 {
+  font-family: $font-family-poppins;
+  font-weight: normal;
+  font-size: 18px;
+  letter-spacing: 0.39px;
+  line-height: 24px;
+}
+
 .full-width {
   left: 50%;
   margin-left: -50vw;
@@ -40,4 +54,15 @@ h3 {
 
 .dark-background {
   background-color: $secondary;
+  color: $white;
+}
+
+.overlay {
+  height: 580px;
+  width: 1200px;
+  background: linear-gradient(270deg, rgba(32, 32, 32, 0.8) 0%, rgba(32, 32, 32, 0.12) 100%);
+}
+
+.white-txt {
+  color: $white;
 }

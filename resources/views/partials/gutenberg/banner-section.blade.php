@@ -9,21 +9,20 @@
 
 
 @php
+$id = get_field('id_section');
 $img = get_field('background_image');
 $txt = get_field('txt_test');
 $rows = get_field('stats_cta');
 @endphp
 
-<section class="banner">
+<section id="{{ $id }}" class="banner">
   <div class="img-banner">
     <img src="{{ $img['url'] }}" class="full-width img-fluid" alt="">
   </div>
-
   @if ($rows)
   <div class="row stats-ctas">
     @foreach ($rows as $row)
     <div class="col-md-4 col-sm-1">
-
       <div class="stats">
         <div class="stat-number">
           <h1>{{ $row['stats_nb'] }}</h1>
@@ -32,7 +31,6 @@ $rows = get_field('stats_cta');
           <h3>{{ $row['stats_txt'] }}</h3>
         </div>
       </div>
-
       <div class="ctas">
         <div class="cta-titre">
           <h4>{{ $row['cta_titre'] }}</h4>
@@ -40,7 +38,7 @@ $rows = get_field('stats_cta');
         <div class="cta-txt">
           <h5>{{ $row['cta_txt'] }}</h5>
         </div>
-        <button type="button" class="button-cta">{{ $row['cta_txt_btn'] }}</button>
+        <button type="button" class="button-cta" onclick="window.location.href='/landing_horde/#{{ $row['btn_lien'] }}'"> {{ $row['cta_txt_btn'] }}</button>
       </div>
     </div>
     @endforeach
