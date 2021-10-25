@@ -11,15 +11,15 @@ $titre = get_field('titre_section');
 $desc = get_field('descr_section');
 $file = get_field('docs');
 @endphp
-<section id="$id">
-  <div class="full-width dark-background ">
+<section id="{{$id}}">
+  <div class="full-width dark-background pb-7">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <h2>{{ $titre }}</h2>
+          <h2 class="pb-3">{{ $titre }}</h2>
         </div>
         <div class="col-md-9">
-          <h4 class="text-justify">{{ $desc }}</h4>
+          <h4 class="pb-3 text-justify">{{ $desc }}</h4>
         </div>
         <div class="col-md-3">
         </div>

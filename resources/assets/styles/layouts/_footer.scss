@@ -1,6 +1,9 @@
 footer {
+  color: #ccc;
+
   hr {
     border-color: $white;
+    border: 1px solid #464646;
   }
 
   .menu-footer-menu-container ul {
@@ -9,5 +12,18 @@ footer {
 
   .menu-informations-generales-menu-container ul {
     list-style: none;
+  }
+
+  .footer-logo {
+    font-size: 24px;
+    font-weight: 600;
+  }
+
+  .menu {
+    padding-left: 0;
+  }
+
+  .menu-item a {
+    color: #ccc;
   }
 }

@@ -12,7 +12,7 @@ $img = get_field('img_equipe');
 $descr = get_field('descr_section');
 @endphp
 
-<section id="{{ $id }}">
+<section id="{{ $id }}" class="py-7">
 <div class="row equipe-section">
   <div class="col-md-12">
 

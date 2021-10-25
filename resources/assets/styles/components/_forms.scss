@@ -17,3 +17,20 @@
   @extend .btn;
   @extend .btn-secondary;
 }
+
+form .form-control {
+  border-radius: 2px;
+
+  &.txt {
+    height: calc(2.5em + 0.75rem + 2px);
+  }
+
+  &:focus {
+    border-color: $primary;
+    box-shadow: none;
+  }
+}
+
+.wpcf7-spinner {
+  display: none;
+}

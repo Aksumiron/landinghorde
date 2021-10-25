@@ -55,11 +55,6 @@ h4 {
 
 .dark-background {
   background-color: $secondary;
-  color: $white;
-
-  a {
-    color: $white;
-  }
 }
 
 .overlay {
@@ -70,4 +65,29 @@ h4 {
 
 .white-txt {
   color: $white;
+}
+
+.py-7 {
+  padding-top: ($spacer * 7) !important;
+  padding-bottom: ($spacer * 7) !important;
+}
+
+.pt-7 {
+  padding-top: ($spacer * 7) !important;
+}
+
+.pb-7 {
+  padding-bottom: ($spacer * 7) !important;
+}
+
+.align-right {
+  display: flex;
+  align-items: right !important;
+  justify-content: right !important;
+}
+
+.align-left {
+  display: flex;
+  align-items: left !important;
+  justify-content: left !important;
 }

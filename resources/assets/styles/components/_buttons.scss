@@ -22,3 +22,24 @@ button:focus {
   outline: 1px solid #fff;
   outline-offset: -4px;
 }
+
+.button-submit {
+  height: 70px;
+  width: 230px;
+  display: inline-block;
+  border: none;
+  border-radius: 2px;
+  margin-right: 1rem;
+  text-decoration: none;
+  background-color: $primary;
+  color: $white;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  text-align: center;
+}
+
+.button-submit:hover,
+.button-submit:focus {
+  background: #0053ba;
+}
