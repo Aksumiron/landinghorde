@@ -1,26 +1,73 @@
-.banner .nav li {
-  @extend .nav-item;
-}
+header {
+  color: #fff;
+  position: absolute;
+  display: flex;
+  flex-flow: row wrap;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 9;
 
-.banner .nav a {
-  @extend .nav-link;
-}
+  .container {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    padding: 15px 0;
+  }
 
-// Custom nav styles
-.logo-section {
-  height: 136px;
-  padding: 3em;
+  nav {
+    justify-content: flex-end;
+    display: flex;
+    flex: 2 auto;
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: row;
+
+      li {
+        padding: 0.5em;
+
+        a {
+          color: #fff;
+          font-size: 18px;
+          text-decoration: none;
+          display: inline-block;
+        }
+      }
+    }
+  }
+
+  .change-color {
+    background-color: $white;
+  }
+
+  .change-color-txt {
+    color: $secondary !important;
+
+    a {
+      color: $secondary;
+    }
+  }
 
   .logo {
-    height: 136px;
-    width: 280px;
-    font-weight: 600;
-    letter-spacing: 2.08px;
-    line-height: 146px;
-  }
+    font-size: 97px;
+    text-transform: uppercase;
+    font-weight: bold;
 
-  ul.navigation-menu {
-    display: flex;
-    list-style-type: none;
+    a {
+      color: #fff;
+      text-decoration: none;
+    }
   }
+}
+
+#container-header {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }

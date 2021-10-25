@@ -4,21 +4,16 @@ import 'jquery';
 // Import everything from autoload
 import './autoload/**/*'
 
-// import local dependencies
-import Router from './util/Router';
-import common from './routes/common';
-import home from './routes/home';
-import aboutUs from './routes/about';
-
-/** Populate Router instance with DOM routes */
-const routes = new Router({
-  // All pages
-  common,
-  // Home page
-  home,
-  // About Us page, note the change from about-us to aboutUs.
-  aboutUs,
-});
-
+import $ from 'jquery';
 // Load Events
-jQuery(document).ready(() => routes.loadEvents());
+$(document).on('scroll', function(){
+    if ( $(window).scrollTop() > 30) {
+        $('#container-header').addClass('change-color');
+        $('#logo').addClass('change-color-txt');
+        $('[id^="menu-item-"]').addClass('change-color-txt');
+    } else {
+        $('#container-header').removeClass('change-color');
+        $('#logo').removeClass('change-color-txt');
+        $('[id^="menu-item-"]').removeClass('change-color-txt');
+    }
+});

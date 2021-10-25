@@ -1,15 +1,14 @@
-<div class="container">
-
-<nav class="navbar navbar-expand-lg navbar-light bg-light" role="navigation">
-  <button class="navbar-toggler" type="button" data-toggle="collapse"
-          data-target="#navbarSupportedContent" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false"
-          aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <a class="navbar-brand" href="{{ home_url('/') }}">LOGO</a>
-  <div class="collapse navbar-collapse nav-primary ml-auto"  id="navbarSupportedContent">
-    @if (has_nav_menu('primary_navigation'))
-      {!! wp_nav_menu(['theme_location' => 'primary_navigation', 'walker' => new wp_bootstrap_navwalker(), 'menu_class' => 'navbar-nav nav ml-auto']) !!}
-    @endif
+<header class="header">
+  <div id="container-header">
+    <div class="container">
+      <div class="logo"><a id="logo" href="#">
+          <h1>Logo</h1>
+        </a></div>
+      <nav>
+        @if (has_nav_menu('primary_navigation'))
+        {!! wp_nav_menu(['theme_location' => 'primary_navigation', 'walker' => new wp_bootstrap_navwalker(), 'menu_id' => 'navbar']) !!}
+        @endif
+      </nav>
+    </div>
   </div>
-</nav>
+</header>

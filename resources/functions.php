@@ -7,6 +7,7 @@
 use Roots\Sage\Config;
 use Roots\Sage\Container;
 use Brain\Hierarchy\Finder\FoldersTemplateFinder;
+use Composer\Installers\WordPressInstaller;
 
 /**
  * Helper function for prettying up errors
@@ -201,3 +202,24 @@ if( function_exists('acf_add_options_page') ) {
 	));
 
 }
+
+/*Register WordPress  Gutenberg CPT */
+function cw_post_type() {
+    register_post_type( 'produits',
+
+        array(
+            'labels' => array(
+                'name' => __( 'Produits' ),
+                'singular_name' => __( 'Produit' )
+            ),
+            'has_archive' => true,
+            'public' => true,
+            'rewrite' => array('slug' => 'produits'),
+            'show_in_rest' => true,
+            'supports' => array('editor')
+
+        )
+    );
+}
+
+add_action( 'init', 'cw_post_type' );

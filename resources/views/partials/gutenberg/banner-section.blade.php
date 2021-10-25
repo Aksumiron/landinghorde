@@ -6,18 +6,17 @@
   Keywords: banner, statistiques, cta
   --}}
 
-
-
 @php
 $id = get_field('id_section');
 $img = get_field('background_image');
 $txt = get_field('txt_test');
 $rows = get_field('stats_cta');
 @endphp
-
+<div class="container">
 <section id="{{ $id }}" class="banner">
+
   <div class="img-banner">
-    <img src="{{ $img['url'] }}" class="full-width img-fluid" alt="">
+      <img src="{{ $img['url'] }}" class="full-width img-fluid" alt="">
   </div>
   @if ($rows)
   <div class="row stats-ctas">
@@ -44,4 +43,6 @@ $rows = get_field('stats_cta');
     @endforeach
   </div>
   @endif
+
 </section>
+</div>

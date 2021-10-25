@@ -11,7 +11,6 @@ $titre = get_field('titre_section');
 $desc = get_field('descr_section');
 $file = get_field('docs');
 @endphp
-
 <section id="$id">
   <div class="full-width dark-background ">
     <div class="container">
@@ -34,8 +33,8 @@ $file = get_field('docs');
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <a class="dropdown-item" href="{{ $file['url'] }}">{{$file['filename']}}</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
+              <a class="dropdown-item" href="#">Document 2</a>
+              <a class="dropdown-item" href="#">Document 3</a>
             </div>
           </div>
           @endif
